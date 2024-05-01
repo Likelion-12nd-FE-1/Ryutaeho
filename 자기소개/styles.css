@@ -1,0 +1,64 @@
+body {
+  font-family: "Noto Sans KR", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #add8e6; /* 연한 하늘색 배경으로 변경 */
+}
+
+header {
+  background-color: transparent; /* 배경색을 투명하게 설정 */
+  color: #333; /* 텍스트 색상 변경 */
+  text-align: center;
+  padding: 20px 0;
+}
+
+.container {
+  width: 80%;
+  max-width: 800px;
+  padding: 20px;
+  margin: 0 auto; /* 화면 가운데 정렬 */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 20px;
+  align-items: start; /* 섹션을 맨 위에 정렬 */
+}
+
+section {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  text-align: left; /* 왼쪽 정렬 */
+  height: 200px; /* 각 섹션의 고정된 높이 */
+  white-space: nowrap; /* 가로로 넘치는 내용이 줄바꿈되지 않도록 설정 */
+  overflow-x: auto; /* 내용이 넘칠 경우 가로 스크롤바 표시 */
+}
+
+h2 {
+  color: #333;
+  font-size: 1.5rem; /* 제목 크기 조정 */
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+ul li {
+  margin-bottom: 10px;
+}
+
+ul li .icon {
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
