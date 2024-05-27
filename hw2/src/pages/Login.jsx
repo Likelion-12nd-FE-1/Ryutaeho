@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"; // 추가
+import IDLogin from "../components/IDLogin";
+import OneTimeNumberLogin from "../components/OneTimeNumberLogin";
+import QRCodeLogin from "../components/QRCodeLogin";
 
 const LoginContainer = styled.div`
   display: flex;
@@ -9,20 +12,15 @@ const LoginContainer = styled.div`
   padding: 20px;
 `;
 
-const Form = styled.form`
+const ButtonGroup = styled.div`
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 20px;
 `;
 
-const Input = styled.input`
-  margin-bottom: 10px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-`;
-
-const Button = styled.button`
+const LoginButton = styled.button`
   padding: 10px 20px;
+  margin: 0 5px;
   background-color: #1ec800;
   color: white;
   border: none;
@@ -38,7 +36,7 @@ const LinkContainer = styled.div`
   margin-top: 20px;
 `;
 
-const LoginLink = styled(Link)`
+const StyledLink = styled(Link)`
   margin-right: 10px;
   color: #1ec800;
   text-decoration: none;
@@ -49,39 +47,27 @@ const LoginLink = styled(Link)`
 `;
 
 const Login = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // 여기에 로그인 처리 로직을 추가하세요.
-    console.log("로그인 시도:", username, password);
-  };
+  const [loginMethod, setLoginMethod] = useState("id");
 
   return (
     <LoginContainer>
-      <h2>로그인</h2>
-      <Form onSubmit={handleSubmit}>
-        <Input
-          type="text"
-          placeholder="아이디"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
-        />
-        <Input
-          type="password"
-          placeholder="비밀번호"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        <Button type="submit">로그인</Button>
-      </Form>
+      <h2>NAVER</h2>
+      <ButtonGroup>
+        <LoginButton onClick={() => setLoginMethod("id")}>ID로그인</LoginButton>
+        <LoginButton onClick={() => setLoginMethod("onetime")}>
+          일회용 번호
+        </LoginButton>
+        <LoginButton onClick={() => setLoginMethod("qrcode")}>
+          QR코드
+        </LoginButton>
+      </ButtonGroup>
+      {loginMethod === "id" && <IDLogin />}
+      {loginMethod === "onetime" && <OneTimeNumberLogin />}
+      {loginMethod === "qrcode" && <QRCodeLogin />}
       <LinkContainer>
-        <LoginLink to="/forgot-password">비밀번호 찾기</LoginLink>|
-        <LoginLink to="/find-id">아이디 찾기</LoginLink>|
-        <LoginLink to="/signup">회원가입</LoginLink>
+        <StyledLink to="">아이디 찾기</StyledLink>|
+        <StyledLink to="">비밀번호 찾기</StyledLink>|
+        <StyledLink to="/signup">회원가입</StyledLink>
       </LinkContainer>
     </LoginContainer>
   );
