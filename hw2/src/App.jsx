@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import SignUp from "./pages/SignUp"; // 회원가입 컴포넌트를 추가합니다.
+import SignUp from "./pages/SignUp";
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
         <Route path="/" element={<Home />} exact />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
-        {/* 회원가입 Route를 추가합니다. */}
+        {/* 다른 경로들도 여기에 추가할 수 있습니다 */}
       </Routes>
     </Router>
   );
